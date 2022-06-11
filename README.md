@@ -11,7 +11,7 @@
 ### Attributes
 PSON gets all object properties (including parent if exists) and if some properties has `JsonProperty` attribute, 
 they will be converted into JSON. 
-```injectablephp
+```php
 <?php
 class User{
 
@@ -28,7 +28,7 @@ class User{
 
 **Example** - convert `User` object into JSON:
 
-```injectablephp
+```php
 <?php
 
 declare(strict_types=1);
@@ -75,7 +75,7 @@ It returns nothing because PHP by default passing all objects by reference
 
 **Example** - convert JSON into `User` (previous example but versa):
 
-```injectablephp
+```php
 <?php
 
 declare(strict_types=1);
@@ -110,7 +110,7 @@ $user = PSON::fromJsonArrayAsClass(json_decode($json, true), User::class);
 var_dump($user);
 ```
 The result will be:
-```injectablephp
+```php
 object(User)#2 (3) {
   ["name":"User":private]=>
   string(10) "Jiang Xina"
@@ -126,7 +126,7 @@ If you have an object that contains another objects in properties, and you want 
     just add `JsonProperty` attribute. Properties with that attribute will be converted into JSON.
 It also works versa: JSON -> object. 
 Example:
-```injectablephp
+```php
 <?php
 
 declare(strict_types=1);
@@ -168,7 +168,7 @@ echo json_encode($jsonArray, JSON_PRETTY_PRINT) . PHP_EOL;
 var_dump(PSON::fromJsonArrayAsClass($jsonArray, Contact::class));
 ```
 The result will be:
-```injectablephp
+```php
 {
     "name": "Elizabeth",
     "address": {
@@ -191,7 +191,7 @@ object(Contact)#8 (2) {
 ## Arrays of objects
 If you want to add a JSON convertable array of objects(like `User[]`), 
 ensure to add what type of object you want to convert in `JsonProperty` attribute like this:
-```injectablephp
+```php
 <?php
 class User{
     //some stuff
