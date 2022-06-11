@@ -16,7 +16,7 @@ class JsonProperty implements AttributeProcessor{
     public function __construct(
         private string $name,
         private bool $required = true,
-        private ?string $arrayKeyClass = null
+        private ?string $arrayValueClass = null
     ){}
 
     /**
@@ -63,10 +63,10 @@ class JsonProperty implements AttributeProcessor{
         }
 
         $value = $data[$this->name] ?? null;
-        if($type->getName() === "array" && $this->arrayKeyClass !== null && class_exists($this->arrayKeyClass)){
+        if($type->getName() === "array" && $this->arrayValueClass !== null && class_exists($this->arrayValueClass)){
             $arr = [];
             foreach($value as $object){
-                $arr[] = PSON::fromJsonArrayAsClass($object, $this->arrayKeyClass);
+                $arr[] = PSON::fromJsonArrayAsClass($object, $this->arrayValueClass);
             }
             $value = $arr;
         }elseif(!$type->isBuiltin() && class_exists($type->getName())){

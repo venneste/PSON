@@ -201,7 +201,7 @@ class UserManager{
     /**
      * @var User[]
      */
-    #[JsonProperty("users", arrayKeyClass: User::class)]
+    #[JsonProperty("users", arrayValueClass: User::class)]
     private array $cachedUsers; //note that phpdoc isn't necessary for json, it's for type hinting in IDE
 }
 ```
