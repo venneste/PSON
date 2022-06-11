@@ -8,7 +8,7 @@
 - Fully customization
 
 ## Getting started
-### Attributes
+## Attributes
 PSON gets all object properties (including parent if exists) and if some properties has `JsonProperty` attribute, 
 they will be converted into JSON. 
 ```php
@@ -21,7 +21,7 @@ class User{
     private string $name = "Daniel"; //will be converted into JSON like {"name": "Daniel"} 
 }
 ```
-###_Convert object into JSON:_
+##_Convert object into JSON:_
 1. Create an `object` instance
 2. Call `PSON::toJsonArray(object)` method
 3. Call `json_encode` with your flags
@@ -67,7 +67,7 @@ The result will be:
 }
 ```
 
-###_Convert JSON into object_:
+##_Convert JSON into object_:
 1. Call `json_decode` with `associative: true`
 2. If you have already instantiated your object, use `PSON::fromJsonArray`.
 It returns nothing because PHP by default passing all objects by reference
