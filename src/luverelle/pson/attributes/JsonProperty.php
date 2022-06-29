@@ -37,6 +37,7 @@ class JsonProperty implements AttributeProcessor{
             return;
         }
         if(is_array($propertyValue)){
+            $data[$this->name] = [];
             foreach($propertyValue as $value){
                 $data[$this->name][] = is_object($value) ? PSON::toJsonArray($value) : $value;
             }
