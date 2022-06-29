@@ -64,6 +64,11 @@ class JsonProperty implements AttributeProcessor{
         }
 
         $value = $data[$this->name] ?? null;
+        if($value === null && $type->allowsNull()){
+            $property->setPropertyValue($value);
+            return;
+        }
+
         if($type->getName() === "array" && $this->arrayValueClass !== null && class_exists($this->arrayValueClass)){
             $arr = [];
             foreach($value as $object){
